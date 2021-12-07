@@ -1,20 +1,49 @@
+import Video from './Video'
+import Stats from './Stats'
+import LikeButton from './LikeButton';
+import Comments from './Comments';
+
 import video from "../data/video.js";
 
 function App() {
   console.log("Here's your data:", video);
 
   return (
-    <div className="App">
-      <iframe
-        width="919"
-        height="525"
-        src="https://www.youtube.com/embed/dQw4w9WgXcQ"
-        frameBorder="0"
-        allowFullScreen
-        title="Thinking in React"
+    <body class={"App"}>
+      <Video 
+        videoURL={video.embedUrl} 
+        title={video.title}  
       />
-    </div>
+      <Stats 
+        views={video.views}
+        uploaded={video.createdAt}
+      />
+      <LikeButton
+        likeType={true}
+        votes={video.upvotes}
+      />
+      <LikeButton
+        likeType={false}
+        votes={video.downvotes}
+      />
+      <Comments comments={video.comments}/>
+    </body>
   );
 }
+/* 
+App
+  Video
+  Details
+    Stats
+    LikeButton
+    LikeButton
+    Comments
+      CommentButton
+      CommentList
+        Comment
+        Comment
+  
+
+*/
 
 export default App;
